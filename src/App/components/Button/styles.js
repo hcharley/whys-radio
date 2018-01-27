@@ -5,9 +5,17 @@ export default StyleSheet.create({
   container: {
     paddingVertical: 10,
     paddingHorizontal: 15,
-    borderRadius: 10,
     backgroundColor: '#000',
     marginBottom: 5,
+  },
+  containerWithIcon: {
+    marginBottom: 10,
+    borderRadius: 130,
+    backgroundColor: '#fff',
+  },
+  icon: {
+    width: 70,
+    height: 70,
   },
   text: {
     fontSize: 20,

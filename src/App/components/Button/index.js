@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableHighlight } from 'react-native';
+import { Text, Image, TouchableHighlight } from 'react-native';
 
 import styles from './styles';
 
@@ -10,12 +10,25 @@ export default class Button extends React.Component {
       this.props.onPress();
     }
   }
-  render() {
+  renderInner() {
+    if (this.props.icon) {
+      return (
+        <Image source={this.props.icon} style={styles.icon} />
+      );
+    }
     return (
-      <TouchableHighlight style={styles.container} onPress={() => this.onPress()}>
-        <Text style={styles.text}>
-          {this.props.text}
-        </Text>
+      <Text style={styles.text}>
+        {this.props.text}
+      </Text>
+    );
+  }
+  render() {
+    let containerStyle = styles.container;
+    if (this.props.icon) containerStyle = styles.containerWithIcon;
+
+    return (
+      <TouchableHighlight style={containerStyle} onPress={() => this.onPress()} underlayColor="#ccc">
+        {this.renderInner()}
       </TouchableHighlight>
     );
   }

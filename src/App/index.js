@@ -3,7 +3,9 @@ import { View, Image, DeviceEventEmitter, Text } from 'react-native';
 import { ReactNativeAudioStreaming } from 'react-native-audio-streaming';
 
 import styles from './styles';
-import logo from './images/whys-logo.png';
+import logo from './images/whys-logo-black.png';
+import playIcon from './images/play.png';
+import pauseIcon from './images/pause.png';
 import { Button, CurrentSong } from './components';
 
 
@@ -58,13 +60,12 @@ export default class App extends React.Component {
           {!!this.state.streamTitle &&
             <CurrentSong streamTitle={this.state.streamTitle} />
           }
-
         </View>
         <View style={styles.footer}>
           {!this.state.playing ? (
-            <Button text="Play" onPress={() => this.play()} />
+            <Button icon={playIcon} text="Play" onPress={() => this.play()} />
           ) : (
-            <Button text="Pause" onPress={() => this.pause()} />
+            <Button icon={pauseIcon} text="Pause" onPress={() => this.pause()} />
           )}
         </View>
       </View>
