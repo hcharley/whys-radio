@@ -58,31 +58,31 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.contentContainer}>
+          <View style={styles.navigation}>
+            <NavigationLink
+              text="Donate"
+              onPress={() => {
+              App.openLink('http://www.whysradio.org/donate.php');
+            }}
+            />
+            <NavigationLink
+              text="Schedule"
+              onPress={() => {
+              App.openLink('http://www.whysradio.org/schedule.php');
+            }}
+            />
+            <NavigationLink
+              text="Recently played"
+              onPress={() => {
+              App.openLink('http://www.whysradio.org/nowplaying.php');
+            }}
+            />
+          </View>
           <Image
             resizeMode="contain"
             style={styles.logo}
             source={logo}
           />
-          <View style={styles.navigation}>
-            <NavigationLink
-              text="Donate"
-              onPress={() => {
-                App.openLink('http://www.whysradio.org/donate.php');
-              }}
-            />
-            <NavigationLink
-              text="Schedule"
-              onPress={() => {
-                App.openLink('http://www.whysradio.org/schedule.php');
-              }}
-            />
-            <NavigationLink
-              text="Recently played"
-              onPress={() => {
-                App.openLink('http://www.whysradio.org/nowplaying.php');
-              }}
-            />
-          </View>
           {!!this.state.streamTitle &&
             <CurrentSong streamTitle={this.state.streamTitle} />
           }

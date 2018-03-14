@@ -31,6 +31,7 @@ export default StyleSheet.create({
   },
   navigation: {
     flexDirection: 'row',
+    marginTop: 10,
     marginBottom: 10,
   },
 });
