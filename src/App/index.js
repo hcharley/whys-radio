@@ -1,15 +1,21 @@
 import React from 'react';
-import { View, Image, DeviceEventEmitter, Text } from 'react-native';
+import { View, Image, DeviceEventEmitter, Linking, Text, TouchableHighlight } from 'react-native';
 import { ReactNativeAudioStreaming } from 'react-native-audio-streaming';
 
 import styles from './styles';
 import logo from './images/whys-logo-black.png';
 import playIcon from './images/play.png';
 import pauseIcon from './images/pause.png';
-import { Button, CurrentSong } from './components';
+import { Button, CurrentSong, NavigationLink } from './components';
 
 
 export default class App extends React.Component {
+  static openLink(url) {
+    console.log('Open link');
+    Linking.openURL(url)
+      .catch(err => console.error('An error occurred', err));
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -57,6 +63,26 @@ export default class App extends React.Component {
             style={styles.logo}
             source={logo}
           />
+          <View style={styles.navigation}>
+            <NavigationLink
+              text="Donate"
+              onPress={() => {
+                App.openLink('http://www.whysradio.org/donate.php');
+              }}
+            />
+            <NavigationLink
+              text="Schedule"
+              onPress={() => {
+                App.openLink('http://www.whysradio.org/schedule.php');
+              }}
+            />
+            <NavigationLink
+              text="Recently played"
+              onPress={() => {
+                App.openLink('http://www.whysradio.org/nowplaying.php');
+              }}
+            />
+          </View>
           {!!this.state.streamTitle &&
             <CurrentSong streamTitle={this.state.streamTitle} />
           }

@@ -13,9 +13,9 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
   },
   logo: {
-    width: 200,
-    height: 200,
-    margin: 30,
+    width: 175,
+    height: 175,
+    margin: 25,
   },
   streamTitleContainer: {
     padding: 20,
@@ -28,5 +28,9 @@ export default StyleSheet.create({
   },
   footer: {
     alignItems: 'center',
+  },
+  navigation: {
+    flexDirection: 'row',
+    marginBottom: 10,
   },
 });
