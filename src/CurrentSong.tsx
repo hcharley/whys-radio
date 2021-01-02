@@ -1,7 +1,9 @@
+import React from 'react';
+import { Text, View } from 'react-native';
+
 import { StyleSheet } from 'react-native';
 
-
-export default StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'stretch',
@@ -24,3 +26,12 @@ export default StyleSheet.create({
     textAlign: 'left',
   },
 });
+
+export const CurrentSong = ({ streamTitle }: { streamTitle: string }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.nowPlayingText}>NOW PLAYING</Text>
+      <Text style={styles.streamTitle}>{streamTitle}</Text>
+    </View>
+  );
+};
