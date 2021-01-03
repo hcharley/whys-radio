@@ -2,6 +2,7 @@
   "dependencies": {
     "expo": "~40.0.0",
     "expo-av": "^8.7.0",
+    "expo-cli": "^4.0.17",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",

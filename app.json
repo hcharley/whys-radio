@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "WHYS Radio",
+    "icon": "./src/images/whys-logo.png",
+    "version": "1.0.0",
+    "slug": "whys-radio",
+    "ios": {
+      "bundleIdentifier": "com.hcbodkin.whysradio",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.hcbodkin.whysradio",
+      "versionCode": 1
+    }
+  }
+}
