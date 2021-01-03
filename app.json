@@ -6,7 +6,10 @@
     "slug": "whys-radio",
     "ios": {
       "bundleIdentifier": "com.hcbodkin.whysradio",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
     },
     "android": {
       "package": "com.hcbodkin.whysradio",

@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, Linking } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
 import logo from './images/whys-logo-black.png';
-// import playIcon from './images/play.png';
-// import pauseIcon from './images/pause.png';
-// import { CurrentSong } from './CurrentSong';
+import playIcon from './images/play.png';
+import pauseIcon from './images/pause.png';
 import { NavigationLink } from './NavigationLink';
-// import { Button } from './Button';
-
-import { StyleSheet } from 'react-native';
+import { Button } from './Button';
 import { CurrentSong } from './CurrentSong';
 import { useAudioPlayer } from './AudioPlayer';
-// import { useAudioPlayer } from './AudioPlayer';
+import { openAppLink } from './openAppLink';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,70 +45,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export const openAppLink = (url: string) => {
-  Linking.openURL(url).catch((err) => console.error('An error occurred', err));
-};
-
 export const WhysRadio = () => {
-  // static openLink(url: string) {
-  //   console.log('Open link');
-  //
-  // }
-
-  // constructor(props: {}) {
-  //   super(props);
-  //   this.state = {
-  //     streamTitle: '',
-  //     playing: false,
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   this.subscription = DeviceEventEmitter.addListener(
-  //     'AudioBridgeEvent',
-  //     (evt) => {
-  //       if (evt.status === 'METADATA_UPDATED' && evt.key === 'StreamTitle') {
-  //         this.setState({ streamTitle: evt.value });
-  //       } else if (evt.status === 'PLAYING' && !this.state.playing) {
-  //         this.setState({ playing: true });
-  //       } else if (evt.status === 'STOPPED' && this.state.playing) {
-  //         this.setState({ playing: false });
-  //       }
-  //     }
-  //   );
-
-  //   ReactNativeAudioStreaming.getStatus((error, status) => {
-  //     this.setState({ playing: status.status === 'PLAYING' });
-  //   });
-  // }
-
-  // play() {
-  //   //   const url = 'http://199.175.55.69:8088/whys?12312312';
-  //   //   ReactNativeAudioStreaming.play(url, {
-  //   //     showIniOSMediaCenter: true,
-  //   //     showInAndroidNotifications: true,
-  //   //   });
-  //   //   this.setState({ playing: true });
-  // }
-
-  // pause() {
-  //   //   ReactNativeAudioStreaming.pause();
-  //   //   this.setState({ playing: false, streamTitle: '' });
-  // }
-
-  // render() {
-  const [state, setState] = useState({
-    streamTitle: '',
-    playing: false,
-  });
-  const { playing } = state;
-
-  const { player } = useAudioPlayer();
-
-  useEffect(() => {
-    if (playing) {
-    }
-  }, [playing]);
+  const { player, playerState } = useAudioPlayer();
 
   return (
     <View style={styles.container}>
@@ -137,19 +72,25 @@ export const WhysRadio = () => {
           />
         </View>
         <Image resizeMode="contain" style={styles.logo} source={logo} />
-        {!!state.streamTitle && <CurrentSong streamTitle={state.streamTitle} />}
+        {!!playerState.streamTitle && (
+          <CurrentSong streamTitle={playerState.streamTitle} />
+        )}
       </View>
-      {/* <View style={styles.footer}>
-          {!this.state.playing ? (
-            <Button icon={playIcon} text="Play" onPress={() => this.play()} />
-          ) : (
-            <Button
-              icon={pauseIcon}
-              text="Pause"
-              onPress={() => this.pause()}
-            />
-          )}
-        </View> */}
+      <View style={styles.footer}>
+        {!playerState.playing ? (
+          <Button
+            icon={playIcon}
+            text="Play"
+            onPress={() => player.playAudio()}
+          />
+        ) : (
+          <Button
+            icon={pauseIcon}
+            text="Pause"
+            onPress={() => player.stopAudio()}
+          />
+        )}
+      </View>
     </View>
   );
   // }

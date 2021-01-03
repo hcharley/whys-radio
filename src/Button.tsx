@@ -27,35 +27,29 @@ const styles = StyleSheet.create({
   },
 });
 
-export class Button extends React.Component<{
+export const Button = (props: {
   onPress: () => void;
   icon: any;
   text: string;
-}> {
-  onPress() {
-    if (this.props.onPress) {
-      this.props.onPress();
+}) => {
+  const renderInner = () => {
+    if (props.icon) {
+      return <Image source={props.icon} style={styles.icon} />;
     }
-  }
-  renderInner() {
-    if (this.props.icon) {
-      return <Image source={this.props.icon} style={styles.icon} />;
-    }
-    return <Text style={styles.text}>{this.props.text}</Text>;
-  }
-  render() {
-    const containerStyle = this.props.icon
-      ? styles.containerWithIcon
-      : styles.container;
+    return <Text style={styles.text}>{props.text}</Text>;
+  };
 
-    return (
-      <TouchableHighlight
-        style={containerStyle}
-        onPress={() => this.onPress()}
-        underlayColor="#ccc"
-      >
-        {this.renderInner()}
-      </TouchableHighlight>
-    );
-  }
-}
+  const containerStyle = props.icon
+    ? styles.containerWithIcon
+    : styles.container;
+
+  return (
+    <TouchableHighlight
+      style={containerStyle}
+      onPress={() => props.onPress()}
+      underlayColor="#ccc"
+    >
+      {renderInner()}
+    </TouchableHighlight>
+  );
+};

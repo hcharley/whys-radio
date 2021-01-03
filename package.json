@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "event-target-shim": "^5.0.1",
     "expo": "~40.0.0",
     "expo-av": "^8.7.0",
     "expo-cli": "^4.0.17",
