@@ -25,11 +25,19 @@ export class AudioPlayer {
     status: AVPlaybackStatus;
   };
 
+  public debug = false;
+
   async start() {
     try {
       this.metadata = await Audio.Sound.createAsync({
         uri: `http://104.238.214.101:8088/whys?${new Date().getTime()}`,
       });
+      this.metadata.sound.setProgressUpdateIntervalAsync(5 * 1000);
+      if (this.debug) {
+        this.metadata.sound.setOnPlaybackStatusUpdate((status) => {
+          console.log('New status', status);
+        });
+      }
       await Audio.setAudioModeAsync({
         staysActiveInBackground: true,
         playsInSilentModeIOS: true,

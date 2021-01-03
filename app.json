@@ -8,12 +8,15 @@
       "bundleIdentifier": "com.hcbodkin.whysradio",
       "buildNumber": "1.0.0",
       "infoPlist": {
-        "UIBackgroundModes": ["audio"]
+        "UIBackgroundModes": [
+          "audio"
+        ]
       }
     },
     "android": {
       "package": "com.hcbodkin.whysradio",
       "versionCode": 1
-    }
+    },
+    "description": ""
   }
 }
