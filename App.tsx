@@ -1,16 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Text } from 'react-native';
-
-// import { WhysRadio } from './src/WhysRadio';
-
-const WhysRadio = () => {
-  return (
-    <View>
-      <Text>App</Text>
-    </View>
-  );
-};
+// import { registerPlaybackService } from 'react-native-track-player';
+import { WhysRadio } from './src/WhysRadio';
+import { registerRootComponent } from 'expo';
 
 export default function App() {
   return (
@@ -26,5 +18,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingTop: 40,
   },
 });
+
+registerRootComponent(App);
+
+// registerPlaybackService(() => require('./service.js'));
