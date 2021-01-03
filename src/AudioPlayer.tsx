@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-// import TrackPlayer from 'react-native-track-player';
-import { Audio, AVPlaybackStatus } from 'expo-av';
-import { Sound } from 'expo-av/build/Audio';
+import { Sound, Audio, AVPlaybackStatus } from 'expo-av';
 import { Alert } from 'react-native';
 
 export class AudioPlayer {
@@ -13,27 +11,13 @@ export class AudioPlayer {
   async start() {
     try {
       this.metadata = await Audio.Sound.createAsync({
-        uri: `https://104.238.214.101:8088/whys?${new Date().getTime()}`,
-        // 'https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3',
+        uri: `http://104.238.214.101:8088/whys?${new Date().getTime()}`,
       });
       await this.playAudio();
-      Alert.alert(
-        'Audio played',
-        'Played successfully',
-        [
-          {
-            text: 'Cancel',
-            onPress: () => console.log('Cancel Pressed'),
-            style: 'cancel',
-          },
-          { text: 'OK', onPress: () => console.log('OK Pressed') },
-        ],
-        { cancelable: false }
-      );
     } catch (cause) {
       Alert.alert(
-        'Error',
-        cause.message || 'Unknown message',
+        'Failed to Start Audio',
+        cause.message || 'Unknown error',
         [
           {
             text: 'Cancel',
