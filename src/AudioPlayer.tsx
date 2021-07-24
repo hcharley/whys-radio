@@ -41,7 +41,7 @@ export class AudioPlayer {
       await Audio.setAudioModeAsync({
         staysActiveInBackground: true,
         playsInSilentModeIOS: true,
-        allowsRecordingIOS: false,
+        allowsRecordingIOS: true,
         interruptionModeIOS: INTERRUPTION_MODE_IOS_DUCK_OTHERS,
       });
       await this.playAudio();
