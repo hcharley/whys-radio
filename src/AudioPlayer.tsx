@@ -138,6 +138,7 @@ export const useAudioPlayer = () => {
       .start()
       .then(() => {
         setState({
+          playing: true,
           setupFailed: false,
           setupSuccessful: true,
         });
